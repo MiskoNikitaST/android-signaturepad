@@ -1,4 +1,4 @@
-package com.github.gcacace.signaturepad.views;
+package com.prologapp.signaturepad.views;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -17,17 +17,15 @@ import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
-import android.widget.ProgressBar;
 
-import com.github.gcacace.signaturepad.R;
-import com.github.gcacace.signaturepad.utils.Bezier;
-import com.github.gcacace.signaturepad.utils.ControlTimedPoints;
-import com.github.gcacace.signaturepad.utils.SvgBuilder;
-import com.github.gcacace.signaturepad.utils.TimedPoint;
-import com.github.gcacace.signaturepad.view.ViewCompat;
-import com.github.gcacace.signaturepad.view.ViewTreeObserverCompat;
+import com.prologapp.signaturepad.R;
+import com.prologapp.signaturepad.utils.Bezier;
+import com.prologapp.signaturepad.utils.ControlTimedPoints;
+import com.prologapp.signaturepad.utils.SvgBuilder;
+import com.prologapp.signaturepad.utils.TimedPoint;
+import com.prologapp.signaturepad.view.ViewCompat;
+import com.prologapp.signaturepad.view.ViewTreeObserverCompat;
 
 import java.io.File;
 import java.io.FileNotFoundException;

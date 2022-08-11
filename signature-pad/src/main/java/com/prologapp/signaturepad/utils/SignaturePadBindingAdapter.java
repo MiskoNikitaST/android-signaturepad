@@ -1,8 +1,8 @@
-package com.github.gcacace.signaturepad.utils;
+package com.prologapp.signaturepad.utils;
 
 import androidx.databinding.BindingAdapter;
 
-import com.github.gcacace.signaturepad.views.SignaturePad;
+import com.prologapp.signaturepad.views.SignaturePad;
 
 public final class SignaturePadBindingAdapter {
 

@@ -1,4 +1,4 @@
-package com.github.gcacace.signaturepad.view;
+package com.prologapp.signaturepad.view;
 
 import android.os.Build;
 import android.view.View;

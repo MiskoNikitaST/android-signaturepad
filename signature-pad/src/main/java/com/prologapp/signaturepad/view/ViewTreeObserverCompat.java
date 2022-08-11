@@ -1,4 +1,4 @@
-package com.github.gcacace.signaturepad.view;
+package com.prologapp.signaturepad.view;
 
 import android.annotation.SuppressLint;
 import android.os.Build;

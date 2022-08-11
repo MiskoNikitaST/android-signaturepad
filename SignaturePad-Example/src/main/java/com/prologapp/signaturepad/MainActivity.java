@@ -1,4 +1,4 @@
-package com.github.gcacace.signaturepad;
+package com.prologapp.signaturepad;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,7 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.github.gcacace.signaturepad.views.SignaturePad;
+import com.prologapp.signaturepad.views.SignaturePad;
 
 import java.io.File;
 import java.io.FileOutputStream;

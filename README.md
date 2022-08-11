@@ -32,9 +32,10 @@ compile 'com.github.gcacace:signature-pad:1.3.1'
 ### For Maven users
 
 Add this dependency to your `pom.xml`:
+
 ```xml
 <dependency>
-  <groupId>com.github.gcacace</groupId>
+  <groupId>com.prologapp.gcacace</groupId>
   <artifactId>signature-pad</artifactId>
   <version>1.3.1</version>
   <type>aar</type>
