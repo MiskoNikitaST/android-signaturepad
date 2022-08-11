@@ -15,6 +15,9 @@ plugins {
     id 'maven-publish'
 }
 
+apply from: rootProject.file("github.properties")
+
+
 allprojects {
     version = VERSION_NAME
     group = GROUP
@@ -22,5 +25,36 @@ allprojects {
     repositories {
         google()
         jcenter()
+    }
+}
+
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+
+                // Replace with your own group ID.
+                groupId 'com.prologapp'
+
+                // Replace with the name of your library
+                artifactId 'signaturepad'
+                version '1.0.0'
+            }
+        }
+
+        repositories {
+            maven {
+                name = "GitHubPackages"
+
+                // Replace GITHUB_USERID with your personal or organisation user ID and
+                // REPOSITORY with the name of the repository on GitHub
+                url = uri("https://maven.pkg.github.com/prologapp/android-signaturepad")
+
+                credentials {
+                    username = ext.user
+                    password = ext.key
+                }
+            }
+        }
     }
 }
