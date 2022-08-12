@@ -24,8 +24,7 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-
-import it.gcacace.signaturepad.R;
+import it.prologapp.signaturepad.R;
 
 public class MainActivity extends Activity {
 
