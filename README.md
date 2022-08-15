@@ -14,19 +14,17 @@ Android Signature Pad is an Android library for drawing smooth signatures. It us
 
 ## Installation
 
-Latest version of the library can be found on Maven Central.
+Latest version of the library can be found on Jitpack io.
 
 ### For Gradle users
 
-Open your `build.gradle` and make sure that Maven Central repository is declared into `repositories` section:
+Open your `build.gradle` and make sure that Jitpack.io repository is declared into `repositories` section:
 ```gradle
-   repositories {
-       mavenCentral()
-   }
+        maven { url "https://jitpack.io" }
 ```
 Then, include the library as dependency:
 ```gradle
-compile 'com.github.gcacace:signature-pad:1.3.1'
+implementation 'com.github.prologapp:android-signaturepad:1.0.0'
 ```
 
 ### For Maven users
@@ -35,10 +33,9 @@ Add this dependency to your `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>com.prologapp.gcacace</groupId>
+  <groupId>com.github.prologapp</groupId>
   <artifactId>signature-pad</artifactId>
-  <version>1.3.1</version>
-  <type>aar</type>
+  <version>1.0.0</version>
 </dependency>
 ```
 
@@ -48,7 +45,7 @@ Add this dependency to your `pom.xml`:
 
 1. Add the `SignaturePad` view to the layout you want to show.
 ```xml
- <com.github.gcacace.signaturepad.views.SignaturePad
+ <com.prologapp.signaturepad.views.SignaturePad
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:app="http://schemas.android.com/apk/res-auto"
      android:id="@+id/signature_pad"
@@ -100,7 +97,7 @@ Add this dependency to your `pom.xml`:
 The `SignaturePad` view has custom Data Binding attribute setters for all the listener events:
 
 ```xml
- <com.github.gcacace.signaturepad.views.SignaturePad
+ <com.prologapp.signaturepad.views.SignaturePad
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:bind="http://schemas.android.com/apk/res-auto"
      android:id="@+id/signature_pad"
