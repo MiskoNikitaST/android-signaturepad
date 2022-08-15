@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-//apply plugin: 'com.jfrog.bintray'
 apply from: rootProject.file("github.properties")
 
 Properties properties = new Properties()
@@ -24,7 +23,7 @@ android {
 afterEvaluate {
     publishing {
         publications {
-            release(MavenPublication) {
+            maven(MavenPublication) {
                 from components.release
 
                 groupId = 'com.github.prologapp'
