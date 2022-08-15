@@ -21,50 +21,16 @@ android {
     }
 }
 
-publishing {
-    publications {
-        maven(MavenPublication) {
-            afterEvaluate {
-                artifact sourcesJar
-                artifact("$buildDir/outputs/aar/signature-pad-debug.aar")
-            }
-            groupId 'com.prologapp'
-            // Replace with the name of your library
-            artifactId 'signature-pad'
-            version '1.0.0'
-        }
-    }
+afterEvaluate {
+    publishing {
+        publications {
+            release(MavenPublication) {
+                from components.release
 
-    repositories {
-        maven {
-            name = "SignaturePad"
-            // Replace GITHUB_USERID with your personal or organisation user ID and
-            // REPOSITORY with the name of the repository on GitHub
-            url = uri("https://maven.pkg.github.com/prologapp/android-signaturepad")
-
-            credentials {
-                username = "gustavocnp95"
-                password = "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"
+                groupId = 'com.github.prologapp'
+                artifactId = 'signature-pad'
+                version = '1.0.0'
             }
         }
     }
-}
-
-task sourcesJar(type: Jar) {
-    archiveClassifier.set('sources')
-    from android.sourceSets.main.java.srcDirs
-}
-
-task javadoc(type: Javadoc) {
-    source = android.sourceSets.main.java.srcDirs
-    classpath += project.files(android.getBootClasspath().join(File.pathSeparator))
-}
-
-task javadocJar(type: Jar, dependsOn: javadoc) {
-    archiveClassifier.set('javadoc')
-    from javadoc.destinationDir
-}
-
-artifacts {
-    archives sourcesJar
 }
