@@ -1,6 +1,5 @@
 apply plugin: 'com.android.library'
 apply plugin: 'maven-publish'
-apply from: rootProject.file("github.properties")
 
 Properties properties = new Properties()
 final def bintrayPropertiesFile = project.rootProject.file('bintray.properties')
@@ -8,9 +7,9 @@ if (bintrayPropertiesFile.exists()) properties.load(bintrayPropertiesFile.newDat
 
 android {
     compileSdkVersion 19
-
     defaultConfig {
         minSdkVersion 19
+        compileSdkVersion 19
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         consumerProguardFiles 'proguard-rules-consumer.pro'
     }
