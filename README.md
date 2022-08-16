@@ -1,5 +1,6 @@
 Android Signature Pad
 ====================
+This repository is a forked from the original library https://github.com/gcacace/android-signaturepad created to fix the crash when saving state of an screen containing the signature view.
 
 Android Signature Pad is an Android library for drawing smooth signatures. It uses variable width Bézier curve interpolation based on [Smoother Signatures](http://corner.squareup.com/2012/07/smoother-signatures.html) post by [Square](https://squareup.com).
 
