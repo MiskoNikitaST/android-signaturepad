@@ -35,7 +35,7 @@ Add this dependency to your `pom.xml`:
 ```xml
 <dependency>
   <groupId>com.github.prologapp</groupId>
-  <artifactId>signature-pad</artifactId>
+  <artifactId>android-signaturepad</artifactId>
   <version>1.0.0</version>
 </dependency>
 ```
