@@ -30,7 +30,7 @@ afterEvaluate {
             maven(MavenPublication) {
                 from components.release
 
-                groupId = 'com.prologapp'
+                groupId = 'com.github.prologapp'
                 artifactId = 'signature-pad'
                 version = '1.0.0'
             }
