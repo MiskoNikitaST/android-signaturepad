@@ -25,7 +25,7 @@ Open your `build.gradle` and make sure that Jitpack.io repository is declared in
 ```
 Then, include the library as dependency:
 ```gradle
-implementation 'com.github.prologapp:android-signaturepad:1.0.0'
+implementation 'com.github.miskonikitast:android-signaturepad:1.0.0'
 ```
 
 ### For Maven users
