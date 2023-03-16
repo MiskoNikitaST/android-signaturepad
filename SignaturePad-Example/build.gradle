@@ -17,6 +17,7 @@ android {
             minifyEnabled false
         }
     }
+    namespace 'it.miskonikitast.signaturepad'
 }
 
 dependencies {

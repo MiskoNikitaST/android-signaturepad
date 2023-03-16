@@ -1,4 +1,4 @@
-package com.prologapp.signaturepad.utils;
+package com.miskonikitast.signaturepad.utils;
 
 /**
  * Created by gcacace on 28/02/14.

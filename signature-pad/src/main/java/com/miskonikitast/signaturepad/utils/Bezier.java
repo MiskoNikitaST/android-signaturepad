@@ -1,4 +1,4 @@
-package com.prologapp.signaturepad.utils;
+package com.miskonikitast.signaturepad.utils;
 
 public class Bezier {
 
