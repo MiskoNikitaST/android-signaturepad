@@ -1,4 +1,4 @@
-package com.prologapp.signaturepad;
+package com.miskonikitast.signaturepad;
 
 import android.Manifest;
 import android.app.Activity;
@@ -17,14 +17,14 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.prologapp.signaturepad.views.SignaturePad;
+import com.miskonikitast.signaturepad.views.SignaturePad;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
-import it.prologapp.signaturepad.R;
+import it.miskonikitast.signaturepad.R;
 
 public class MainActivity extends Activity {
 

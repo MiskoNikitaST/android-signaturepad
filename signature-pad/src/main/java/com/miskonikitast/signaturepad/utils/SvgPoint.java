@@ -1,4 +1,4 @@
-package com.prologapp.signaturepad.utils;
+package com.miskonikitast.signaturepad.utils;
 
 /**
  * Represent a point as it would be in the generated SVG document.

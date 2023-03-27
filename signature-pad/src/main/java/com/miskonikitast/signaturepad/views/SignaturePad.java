@@ -1,4 +1,4 @@
-package com.prologapp.signaturepad.views;
+package com.miskonikitast.signaturepad.views;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -19,13 +19,13 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 
-import com.prologapp.signaturepad.R;
-import com.prologapp.signaturepad.utils.Bezier;
-import com.prologapp.signaturepad.utils.ControlTimedPoints;
-import com.prologapp.signaturepad.utils.SvgBuilder;
-import com.prologapp.signaturepad.utils.TimedPoint;
-import com.prologapp.signaturepad.view.ViewCompat;
-import com.prologapp.signaturepad.view.ViewTreeObserverCompat;
+import com.miskonikitast.signaturepad.R;
+import com.miskonikitast.signaturepad.utils.Bezier;
+import com.miskonikitast.signaturepad.utils.ControlTimedPoints;
+import com.miskonikitast.signaturepad.utils.SvgBuilder;
+import com.miskonikitast.signaturepad.utils.TimedPoint;
+import com.miskonikitast.signaturepad.view.ViewCompat;
+import com.miskonikitast.signaturepad.view.ViewTreeObserverCompat;
 
 import java.io.File;
 import java.io.FileNotFoundException;

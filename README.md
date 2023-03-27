@@ -34,7 +34,7 @@ Add this dependency to your `pom.xml`:
 
 ```xml
 <dependency>
-  <groupId>com.github.prologapp</groupId>
+  <groupId>com.github.miskonikitast</groupId>
   <artifactId>android-signaturepad</artifactId>
   <version>1.0.0</version>
 </dependency>
@@ -46,7 +46,7 @@ Add this dependency to your `pom.xml`:
 
 1. Add the `SignaturePad` view to the layout you want to show.
 ```xml
- <com.prologapp.signaturepad.views.SignaturePad
+ <com.miskonikitast.signaturepad.views.SignaturePad
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:app="http://schemas.android.com/apk/res-auto"
      android:id="@+id/signature_pad"
@@ -98,7 +98,7 @@ Add this dependency to your `pom.xml`:
 The `SignaturePad` view has custom Data Binding attribute setters for all the listener events:
 
 ```xml
- <com.prologapp.signaturepad.views.SignaturePad
+ <com.miskonikitast.signaturepad.views.SignaturePad
      xmlns:android="http://schemas.android.com/apk/res/android"
      xmlns:bind="http://schemas.android.com/apk/res-auto"
      android:id="@+id/signature_pad"

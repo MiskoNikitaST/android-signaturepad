@@ -1,8 +1,8 @@
-package com.prologapp.signaturepad.utils;
+package com.miskonikitast.signaturepad.utils;
 
 import androidx.databinding.BindingAdapter;
 
-import com.prologapp.signaturepad.views.SignaturePad;
+import com.miskonikitast.signaturepad.views.SignaturePad;
 
 public final class SignaturePadBindingAdapter {
 

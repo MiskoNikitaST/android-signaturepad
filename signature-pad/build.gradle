@@ -6,10 +6,10 @@ final def bintrayPropertiesFile = project.rootProject.file('bintray.properties')
 if (bintrayPropertiesFile.exists()) properties.load(bintrayPropertiesFile.newDataInputStream())
 
 android {
-    compileSdkVersion 19
+    compileSdkVersion 33
     defaultConfig {
         minSdkVersion 19
-        compileSdkVersion 19
+        compileSdkVersion 33
         targetSdkVersion Integer.parseInt(project.ANDROID_BUILD_TARGET_SDK_VERSION)
         consumerProguardFiles 'proguard-rules-consumer.pro'
     }
@@ -22,6 +22,7 @@ android {
     dataBinding {
         enabled = true
     }
+    namespace 'com.miskonikitast.signaturepad'
 }
 
 afterEvaluate {
@@ -30,7 +31,7 @@ afterEvaluate {
             maven(MavenPublication) {
                 from components.release
 
-                groupId = 'com.github.prologapp'
+                groupId = 'com.github.miskonikitast'
                 artifactId = 'signature-pad'
                 version = '1.0.0'
             }
