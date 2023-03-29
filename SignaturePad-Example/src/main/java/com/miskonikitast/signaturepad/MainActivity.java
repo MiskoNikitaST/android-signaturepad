@@ -10,12 +10,12 @@ import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import androidx.annotation.NonNull;
-import androidx.core.app.ActivityCompat;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
+
+import androidx.annotation.NonNull;
+import androidx.core.app.ActivityCompat;
 
 import com.miskonikitast.signaturepad.views.SignaturePad;
 
@@ -24,15 +24,18 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.util.Locale;
+
 import it.miskonikitast.signaturepad.R;
 
 public class MainActivity extends Activity {
 
     private static final int REQUEST_EXTERNAL_STORAGE = 1;
-    private static String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
+    private static final String[] PERMISSIONS_STORAGE = {Manifest.permission.WRITE_EXTERNAL_STORAGE};
     private SignaturePad mSignaturePad;
     private Button mClearButton;
-    private Button mSaveButton;
+    private Button mSaveButtonJpg;
+    private Button mSaveButtonSvg;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,7 +43,7 @@ public class MainActivity extends Activity {
         verifyStoragePermissions(this);
         setContentView(R.layout.activity_main);
 
-        mSignaturePad = (SignaturePad) findViewById(R.id.signature_pad);
+        mSignaturePad = findViewById(R.id.signature_pad);
         mSignaturePad.setOnSignedListener(new SignaturePad.OnSignedListener() {
             @Override
             public void onStartSigning() {
@@ -49,55 +52,52 @@ public class MainActivity extends Activity {
 
             @Override
             public void onSigned() {
-                mSaveButton.setEnabled(true);
+                mSaveButtonJpg.setEnabled(true);
+                mSaveButtonSvg.setEnabled(true);
                 mClearButton.setEnabled(true);
             }
 
             @Override
             public void onClear() {
-                mSaveButton.setEnabled(false);
+                mSaveButtonJpg.setEnabled(false);
+                mSaveButtonSvg.setEnabled(false);
                 mClearButton.setEnabled(false);
             }
         });
 
-        mClearButton = (Button) findViewById(R.id.clear_button);
-        mSaveButton = (Button) findViewById(R.id.save_button);
+        mClearButton = findViewById(R.id.clear_button);
+        mSaveButtonJpg = findViewById(R.id.save_button_jpg);
+        mSaveButtonSvg = findViewById(R.id.save_button_svg);
 
-        mClearButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                mSignaturePad.clear();
+        mClearButton.setOnClickListener(view -> mSignaturePad.clear());
+
+        mSaveButtonJpg.setOnClickListener(view -> {
+            Bitmap signatureBitmap = mSignaturePad.getSignatureBitmap();
+            if (addJpgSignatureToGallery(signatureBitmap)) {
+                Toast.makeText(MainActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
             }
         });
 
-        mSaveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bitmap signatureBitmap = mSignaturePad.getSignatureBitmap();
-                if (addJpgSignatureToGallery(signatureBitmap)) {
-                    Toast.makeText(MainActivity.this, "Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Unable to store the signature", Toast.LENGTH_SHORT).show();
-                }
-                if (addSvgSignatureToGallery(mSignaturePad.getSignatureSvg())) {
-                    Toast.makeText(MainActivity.this, "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(MainActivity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
-                }
+        mSaveButtonSvg.setOnClickListener(view -> {
+            String signatureSvg = mSignaturePad.getSignatureSvg();
+            if (addSvgSignatureToGallery(signatureSvg)) {
+                Toast.makeText(MainActivity.this, "SVG Signature saved into the Gallery", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(MainActivity.this, "Unable to store the SVG signature", Toast.LENGTH_SHORT).show();
             }
         });
+
     }
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
-                                           @NonNull String permissions[], @NonNull int[] grantResults) {
-        switch (requestCode) {
-            case REQUEST_EXTERNAL_STORAGE: {
-                // If request is cancelled, the result arrays are empty.
-                if (grantResults.length <= 0
-                        || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
-                    Toast.makeText(MainActivity.this, "Cannot write images to external storage", Toast.LENGTH_SHORT).show();
-                }
+                                           @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if (requestCode == REQUEST_EXTERNAL_STORAGE) {// If request is cancelled, the result arrays are empty.
+            if (grantResults.length <= 0
+                    || grantResults[0] != PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(MainActivity.this, "Cannot write images to external storage", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -107,7 +107,7 @@ public class MainActivity extends Activity {
         File file = new File(Environment.getExternalStoragePublicDirectory(
                 Environment.DIRECTORY_PICTURES), albumName);
         if (!file.mkdirs()) {
-            Log.e("SignaturePad", "Directory not created");
+            Log.e("SignaturePad", "Directory not created or already exists");
         }
         return file;
     }
@@ -125,7 +125,7 @@ public class MainActivity extends Activity {
     public boolean addJpgSignatureToGallery(Bitmap signature) {
         boolean result = false;
         try {
-            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%d.jpg", System.currentTimeMillis()));
+            File photo = new File(getAlbumStorageDir("SignaturePad"), String.format(Locale.getDefault(), "Signature_%d.jpg", System.currentTimeMillis()));
             saveBitmapToJPG(signature, photo);
             scanMediaFile(photo);
             result = true;
@@ -145,7 +145,7 @@ public class MainActivity extends Activity {
     public boolean addSvgSignatureToGallery(String signatureSvg) {
         boolean result = false;
         try {
-            File svgFile = new File(getAlbumStorageDir("SignaturePad"), String.format("Signature_%d.svg", System.currentTimeMillis()));
+            File svgFile = new File(getAlbumStorageDir("SignaturePad"), String.format(Locale.getDefault(), "Signature_%d.svg", System.currentTimeMillis()));
             OutputStream stream = new FileOutputStream(svgFile);
             OutputStreamWriter writer = new OutputStreamWriter(stream);
             writer.write(signatureSvg);
